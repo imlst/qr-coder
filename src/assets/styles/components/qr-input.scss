@@ -1,0 +1,65 @@
+.qr-input {
+    background: #fff;
+    padding: 30px 30px 35px;
+    display: flex;
+    width: 400px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .2), 0 2px 4px 0 rgba(0, 0, 0, .1);
+
+    &__inner {
+        position: relative;
+        width: 100%;
+    }
+
+    input {
+        font-family: 'Roboto', sans-serif;
+        appearance: none;
+        border: none;
+        background: none;
+        padding: 0 20px 5px 0;
+        width: 100%;
+        font-size: 18px;
+        border-bottom: 2px solid #222;
+        transition: border-color 0.2s ease;
+
+        &::placeholder {
+            color: #aaa;
+        }
+
+        &:hover {
+            border-color: #5480ff;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: #5480ff;
+        }
+    }
+
+    &__clear {
+        position: absolute;
+        right: 3px;
+        top: calc(50% - 5px);
+        transform: translateY(-50%);
+        color: #aaa;
+        cursor: pointer;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: #222;
+        }
+    }
+
+    &__limit {
+        position: absolute;
+        left: 0;
+        bottom: -20px;
+        font-size: 13px;
+        color: #aaa;
+        pointer-events: none;
+
+        &.--warning {
+            color: red;
+        }
+    }
+}
