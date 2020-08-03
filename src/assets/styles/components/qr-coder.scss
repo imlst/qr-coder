@@ -1,0 +1,58 @@
+.qr-coder {
+    &__code {
+        width: 340px;
+        height: 340px;
+        margin-bottom: 30px;
+    }
+
+    &__placeholder {
+        width: calc(100% + 60px);
+        height: calc(100% + 60px);
+        margin: -30px;
+        animation: blink 3s 0s linear infinite;
+        filter: opacity(0.3);
+    }
+
+    &__favorite {
+        font-size: 18px;
+        transition: color 0.2s ease;
+        color: #ff9425;
+        margin-right: 5px;
+    }
+
+    &__actions {
+        margin-bottom: 20px;
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            li {
+                margin-bottom: 8px;
+                font-size: 15px;
+
+                a {
+                    color: #757575;
+                    text-decoration: none;
+                    display: inline-flex;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

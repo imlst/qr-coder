@@ -11,9 +11,9 @@ const routes = [
         component: QrGenerator
     },
     {
-        path: '/about',
-        name: 'about',
-        component: () => import(/* webpackChunkName: "about" */ '../views/about.vue')
+        path: '/favorites',
+        name: 'favorites',
+        component: () => import(/* webpackChunkName: "favorites" */ '../views/favorites.vue')
     }
 ]
 

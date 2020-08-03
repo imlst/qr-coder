@@ -1,14 +1,29 @@
 <template>
-    <div class="centered-content">
-        <div class="qrcode">
-            <qrcode-vue v-if="typedString" :value="typedString" :size="220" level="H" />
-            <img v-else class="qrcode__placeholder" src="../assets/qrcode-placeholder.svg" alt="">
+    <div class="content-tile --generator">
+        <div class="content-tile__nav">
+            <router-link to="/favorites">
+                <span>Избранное</span>
+                <span v-if="favoriteList.length" class="ui-tag">{{ favoriteList.length }}</span>
+            </router-link>
+        </div>
 
-            <i
-                v-if="typedString"
-                :class="['qrcode__favorite fa fa-star-o', { '--added': inFavorite }]"
-                @click="toggleFavorite"
-            />
+        <div class="qr-coder__code">
+            <qrcode-vue v-if="string" :value="string" :size="340" level="H" />
+            <img v-else class="qr-coder__placeholder" src="../assets/qrcode-placeholder.svg" alt="">
+        </div>
+
+        <div class="qr-coder__actions">
+            <ul>
+                <li>
+                    <a v-if="string" href="javascript:void(0);" @click="toggleFavorite">
+                        <font-awesome-icon v-if="inFavorite" class="qr-coder__favorite" :icon="['fas', 'star']" />
+                        <font-awesome-icon v-else class="qr-coder__favorite" :icon="['far', 'star']" />
+                        <span>{{ inFavorite ? 'Удалить из избранного' : 'Добавить в избранное' }}</span>
+                    </a>
+
+                    <div v-else class="blank-content" style="width: 180px;" />
+                </li>
+            </ul>
         </div>
 
         <qr-input v-model="string" :maxlength="200" @change="onChange" ref="mainInput" />
@@ -29,7 +44,7 @@ export default {
 
     data: () => ({
         string: '',
-        typedString: '',
+        // typedString: '',
     }),
 
     computed: {
@@ -37,14 +52,17 @@ export default {
             return this.$route.query.string;
         },
 
+        favoriteList() {
+            return this.$store.getters.getFavorites;
+        },
+
         inFavorite() {
-            return this.$store.getters.getFavorites.includes(this.typedString);
+            return this.favoriteList.includes(this.string);
         },
     },
 
     created() {
         this.string = this.urlString || '';
-        this.typedString = this.string;
     },
 
     mounted() {
@@ -54,7 +72,6 @@ export default {
     methods: {
         onChange(value) {
             this.string = value;
-            this.typedString = value;
 
             this.$router.push({
                 query: {
@@ -65,8 +82,10 @@ export default {
 
         toggleFavorite() {
             this.inFavorite
-                ? this.$store.commit('removeFavorite', this.typedString)
-                : this.$store.commit('addFavorite', this.typedString);
+                ? this.$store.commit('removeFavorite', this.string)
+                : this.$store.commit('addFavorite', this.string);
+
+            localStorage.setItem('favoriteList', JSON.stringify(this.favoriteList));
         },
     },
 }

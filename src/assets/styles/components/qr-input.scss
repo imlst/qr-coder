@@ -1,10 +1,7 @@
 .qr-input {
     background: #fff;
-    padding: 30px 30px 35px;
     display: flex;
-    width: 400px;
     border-radius: 4px;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .2), 0 2px 4px 0 rgba(0, 0, 0, .1);
 
     &__inner {
         position: relative;
@@ -23,7 +20,7 @@
         transition: border-color 0.2s ease;
 
         &::placeholder {
-            color: #aaa;
+            color: #757575;
         }
 
         &:hover {
@@ -41,7 +38,7 @@
         right: 3px;
         top: calc(50% - 5px);
         transform: translateY(-50%);
-        color: #aaa;
+        color: #757575;
         cursor: pointer;
         transition: color 0.2s ease;
 
@@ -55,7 +52,7 @@
         left: 0;
         bottom: -20px;
         font-size: 13px;
-        color: #aaa;
+        color: #757575;
         pointer-events: none;
 
         &.--warning {

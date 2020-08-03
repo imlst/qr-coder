@@ -8,6 +8,10 @@ export default new Vuex.Store({
         favorites: [],
     },
     mutations: {
+        setFavoriteList(state, payload) {
+            state.favorites = payload;
+        },
+
         addFavorite(state, payload) {
             state.favorites.push(payload);
         },

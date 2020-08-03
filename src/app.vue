@@ -1,12 +1,14 @@
 <template>
     <div id="app">
-<!--        <router-link to="/">Home</router-link> |-->
-<!--        <router-link to="/about">About</router-link>-->
-
         <router-view/>
     </div>
 </template>
 
-<style lang="scss">
-
-</style>
+<script>
+export default {
+    created() {
+        const savedFavoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
+        this.$store.commit('setFavoriteList', savedFavoriteList);
+    }
+}
+</script>

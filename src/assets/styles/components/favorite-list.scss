@@ -1,0 +1,45 @@
+.favorite-list {
+    &__item {
+        display: flex;
+        border-bottom: 1px dashed #dadada;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        &-value {
+            padding-left: 15px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+
+            a {
+                color: #757575;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &-remove {
+            display: flex;
+            align-items: center;
+            padding-right: 15px;
+
+            &-icon {
+                font-size: 15px;
+                color: #757575;
+                cursor: pointer;
+
+                &:hover {
+                    color: #222;
+                }
+            }
+        }
+    }
+}

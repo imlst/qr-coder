@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 @import "components/qr-input";
-@import "components/qrcode";
+@import "components/qr-coder";
+@import "components/blank-content";
+@import "components/content-tile";
+@import "components/ui-tag";
+@import "components/favorite-list";
 
 * {
     box-sizing: border-box;
@@ -19,12 +23,5 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-.centered-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    justify-content: center;
-    align-items: center;
+    padding: 60px 0;
 }

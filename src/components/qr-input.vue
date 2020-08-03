@@ -2,13 +2,9 @@
     <div class="qr-input">
         <div class="qr-input__inner">
             <input type="text" v-model="localValue" placeholder="Введите текст или ссылку" :maxlength="maxlength" @change="onChange">
+            <font-awesome-icon v-if="localValue.length" class="qr-input__clear" :icon="['fas', 'trash']" @click="clearValue" />
 
-            <i v-if="localValue.length" class="qr-input__clear fa fa-trash" @click="clearValue" />
-
-            <div
-                v-if="maxlength"
-                :class="['qr-input__limit', { '--warning': valueAvailableLimit <= 10 }]"
-            >
+            <div v-if="maxlength" :class="['qr-input__limit', { '--warning': valueAvailableLimit <= 10 }]">
                 {{ valueAvailableLimit }}
             </div>
         </div>
